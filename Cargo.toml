@@ -1,0 +1,27 @@
+[package]
+name = "myesp32"
+version = "0.1.0"
+authors = ["Mikael Silvén <mikael@silven.nu>"]
+edition = "2018"
+resolver = "2"
+
+[profile.release]
+opt-level = "s"
+
+[profile.dev]
+debug = true # Symbols are nice and they don't increase the size on Flash
+opt-level = "z"
+
+[features]
+pio = ["esp-idf-sys/pio"]
+
+[dependencies]
+embedded-hal = "0.2.7"
+anyhow = "1"
+esp-idf-sys = { version = "0.31.5", features = ["binstart"] }
+esp-idf-hal = "0.37"
+lcd_1602_i2c = "0.3.0"
+
+[build-dependencies]
+embuild = "0.29"
+anyhow = "1"
